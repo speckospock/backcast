@@ -4,7 +4,7 @@ var AppView = Backbone.View.extend({
 
   initialize: function(videoz) {
     this.videos = new Videos(videoz);
-    this.videos.search('puppies');
+    this.videos.search('primitive technology: water powered hammer');
     console.log(this.videos.first());
     //this.videos.search('baseball');
     this.render();
