@@ -5,7 +5,8 @@ var VideoListView = Backbone.View.extend({
   initialize: function() {
     //this.render();
     //when the video collection updates, it should re-render
-    this.collection.on('update', () => { this.render(); });
+    this.collection.on('sync', () => { this.render(); });
+    
   },
 
   render: function() {
@@ -14,7 +15,7 @@ var VideoListView = Backbone.View.extend({
     this.collection.each((video) => {
       var thisVideo = new VideoListEntryView({model: video});
       this.$el.children().append(thisVideo.render().$el);
-    }, this);
+    });
     return this;
   },
 
