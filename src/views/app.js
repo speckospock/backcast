@@ -14,7 +14,8 @@ var AppView = Backbone.View.extend({
       this.VideoPlayerView = new VideoPlayerView({model: selectedVideo}).render();
     });
     this.videos.on('sync', () => {
-      this.VideoPlayerView = new VideoPlayerView({model: this.videos.first()}).render();
+      this.videos.first().select();
+      //this.VideoPlayerView = new VideoPlayerView({model: this.videos.first()}).render();
       this.VideoListView = new VideoListView({collection: this.videos}).render();
     });
     //search button on click should call this.videos.search with the search query
