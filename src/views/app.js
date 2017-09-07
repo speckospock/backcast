@@ -2,8 +2,8 @@ var AppView = Backbone.View.extend({
 
   el: '#app',
 
-  initialize: function() {
-    this.videos = new Videos(window.exampleVideoData);
+  initialize: function(videoz) {
+    this.videos = new Videos(videoz);
     this.render();
     this.VideoPlayerView = new VideoPlayerView({model: this.videos.first()}).render();
     this.VideoListView = new VideoListView({collection: this.videos}).render();

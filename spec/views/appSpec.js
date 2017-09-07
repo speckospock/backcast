@@ -8,7 +8,8 @@ describe('AppView', function() {
     sinon.spy(AppView.prototype, 'render');
     sinon.spy(Backbone, 'ajax');
 
-    view = new AppView();
+    // debugger;
+    view = new AppView(fakeVideoData);
     view.videos.reset(fakeVideoData);
   });
 

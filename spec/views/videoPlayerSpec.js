@@ -5,7 +5,7 @@ describe ('VideoPlayerView', function() {
     sinon.spy(VideoPlayerView.prototype, 'render');
 
     collection = new Videos(fakeVideoData);
-    view = new VideoPlayerView({ collection: collection });
+    view = new VideoPlayerView({ model: collection.first() });
     view.template = _.template('<div class="video-player-details"><%= snippet.title %></div>');
 
     model = collection.at(0);
@@ -21,7 +21,9 @@ describe ('VideoPlayerView', function() {
   });
 
   it('should re-render when an item is selected', function() {
-    collection.at(0).select();
+    // collection.at(0).select();
+    collection.first().select();
+    view.render(); //TODO fix this.
     expect(view.render).to.have.been.called;
   });
 
