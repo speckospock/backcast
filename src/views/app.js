@@ -5,6 +5,7 @@ var AppView = Backbone.View.extend({
   initialize: function(videoz) {
     this.videos = new Videos(videoz);
     this.videos.search('puppies');
+    //this.videos.search('baseball');
     this.render();
     this.VideoPlayerView = new VideoPlayerView({model: this.videos.first()}).render();
     this.VideoListView = new VideoListView({collection: this.videos}).render();
@@ -14,6 +15,11 @@ var AppView = Backbone.View.extend({
     });
     this.videos.on('sync', () => {
       this.VideoPlayerView = new VideoPlayerView({model: this.videos.first()}).render();
+      this.VideoListView = new VideoListView({collection: this.videos}).render();
+    });
+    //search button on click should call this.videos.search with the search query
+    this.SearchView.$('.btn').on('click', () => {
+      this.videos.search(this.SearchView.$('.form-control').val());
     });
   },
 

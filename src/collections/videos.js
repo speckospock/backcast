@@ -2,11 +2,11 @@ var Videos = Backbone.Collection.extend({
 
   model: Video,
 
-  initialize: function(searchThing) {
-    var searchThing = searchThing || 'puppies';
-    //that perfoms an initial inquiry to the capital YOUTUBE peepz
-    this.search(searchThing);
-    console.log(this);
+  initialize: function() {
+    // var searchThing = searchThing || 'puppies';
+    // //that perfoms an initial inquiry to the capital YOUTUBE peepz
+    // this.search(searchThing);
+    // console.log(this);
   },
 
   search: function (query) {
@@ -15,11 +15,12 @@ var Videos = Backbone.Collection.extend({
       data: {
         q: query,
         part: 'snippet',
-        //maxResults: 5,
+        maxResults: 5,
         key: window.YOUTUBE_API_KEY, // in youtube.js
-        //videoEmbeddable: true,
-        //type: 'video', // needed to make embeddable only work
-      }
+        videoEmbeddable: true,
+        type: 'video', // needed to make embeddable only work
+      },
+      reset: true,
     });
     //we need to make this an array
     //we need to select the first of these results
