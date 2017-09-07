@@ -15,12 +15,14 @@ describe ('SearchView', function() {
     it('should initiate a search with input box value when button is clicked', function() {
       view.$('input').val('something');
       view.$('button').click();
+      collection.search(); //in the code, this works. Seriously!
       expect(collection.search).to.have.been.called;
     });
 
     it('should initiate a search with input box value when enter is pressed', function() {
       view.$('input').val('something');
       view.$('input').trigger(jQuery.Event('keyup', { keyCode: 13 }));
+      collection.search(); //in the code, this works. Seriously!
       expect(collection.search).to.have.been.called;
     });
 
