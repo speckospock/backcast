@@ -21,6 +21,11 @@ var AppView = Backbone.View.extend({
     this.SearchView.$('.btn').on('click', () => {
       this.videos.search(this.SearchView.$('.form-control').val());
     });
+    this.SearchView.$('.form-control').on('keypress', (e) => {
+      if (e.which === 13) {
+        this.SearchView.$('.btn').trigger('click');
+      }
+    });
   },
 
   render: function() {
